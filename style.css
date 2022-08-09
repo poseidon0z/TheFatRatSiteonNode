@@ -112,6 +112,34 @@ body {
     color: #ffffff;
 }
 
+.quick-info-section {
+    max-width: 1000px;
+}
+
+.info-item {
+    padding-bottom: 0.5em;
+    margin: 0.5em;
+    font-size: 1.2em;
+}
+
+.info-item:last-child {
+    margin-bottom: 2em;
+}
+
+.info-header {
+    display: inline-block;
+    font-weight: bold;
+    padding-right: 0.5em;
+    width: 30%;
+}
+
+.info-detail {
+    display: inline-block;
+    text-align: center;
+    width: 40%;
+}
+
+
 .btn-header {
     display: block;
     margin: 0.5em auto 2em auto;
