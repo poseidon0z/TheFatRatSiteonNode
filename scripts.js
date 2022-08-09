@@ -23,9 +23,17 @@ function ready() {
     button.addEventListener('click', addToCartClicked);
   }
 
-  document
-    .getElementsByClassName('btn-purchase')[0]
-    .addEventListener('click', purchaseClicked);
+  if (document.getElementsByClassName('btn-purchase')[0]) {
+    document
+      .getElementsByClassName('btn-purchase')[0]
+      .addEventListener('click', purchaseClicked);
+  }
+
+  var tourButttons = document.getElementsByClassName('tour-btn');
+  for (var i = 0; i < tourButttons.length; i++) {
+    var button = tourButttons[i];
+    button.addEventListener('click', tourLinkClicked);
+  }
 }
 
 function purchaseClicked() {
@@ -97,6 +105,10 @@ function quantityChanged(event) {
     input.value = 1;
   }
   updateCartTotal();
+}
+
+function tourLinkClicked() {
+  alert('Sorry... Event has ended');
 }
 
 function updateCartTotal() {
