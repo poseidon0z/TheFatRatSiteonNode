@@ -37,12 +37,43 @@ function ready() {
 }
 
 function purchaseClicked() {
-  alert('Thank you for your purchase!');
-  var cartItems = document.getElementsByClassName('cart-items')[0];
-  while (cartItems.hasChildNodes()) {
-    cartItems.removeChild(cartItems.firstChild);
+  var items = [];
+  const cartItems = document.getElementsByClassName('cart-product');
+  for (const cartItem of cartItems) {
+    const itemId = cartItem.dataset.ItemId;
+    const quantityColumn = cartItem.getElementsByClassName('cart-quantity');
+    const quantity = quantityColumn[0].getElementsByClassName(
+      'cart-quantity-input'
+    )[0].value;
+    items.push({
+      id: itemId,
+      quantity: quantity,
+    });
   }
-  updateCartTotal();
+  fetch('/purchase', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      items: items,
+    }),
+  })
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      alert(data.message);
+      var cartItems = document.getElementsByClassName('cart-items')[0];
+      while (cartItems.hasChildNodes()) {
+        cartItems.removeChild(cartItems.firstChild);
+      }
+      updateCartTotal();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 function addToCartClicked(event) {
@@ -51,11 +82,12 @@ function addToCartClicked(event) {
   var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText;
   var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText;
   var img = shopItem.getElementsByClassName('shop-item-image')[0].src;
-  addItemToCart(title, price, img);
+  var id = shopItem.dataset.ItemId;
+  addItemToCart(title, price, img, id);
   updateCartTotal();
 }
 
-function addItemToCart(title, price, imgSrc) {
+function addItemToCart(title, price, imgSrc, id) {
   var cartItems = document.getElementsByClassName('cart-items')[0];
   var cartItemNames = cartItems.getElementsByClassName('cart-item-title');
   for (var i = 0; i < cartItemNames.length; i++) {
@@ -65,24 +97,25 @@ function addItemToCart(title, price, imgSrc) {
     }
   }
   var cartRow = document.createElement('div');
+  cartRow.dataset.ItemId = id;
   cartRow.classList.add('cart-row');
+  cartRow.classList.add('cart-product');
   var cartRowContents = `
   <div class="cart-item cart-column">
-        <img
-            class="cart-item-image"
-            src="${imgSrc}"
-            alt="fly away album art"
-            width="100"
-            height="100"
-        />
-        <span class="cart-item-title">${title}</span>
-        </div>
-        <span class="cart-price cart-column">${price}</span>
-        <div class="cart-quantity cart-column">
-        <input class="cart-quantity-input" type="number" value="1" />
-        <button class="btn btn-danger" role="button">REMOVE</button>
-        </div>
-    </div>`;
+      <img
+          class="cart-item-image"
+          src="${imgSrc}"
+          alt="fly away album art"
+          width="100"
+          height="100"
+      />
+      <span class="cart-item-title">${title}</span>
+  </div>
+  <span class="cart-price cart-column">${price}</span>
+  <div class="cart-quantity cart-column">
+    <input class="cart-quantity-input" type="number" value="1" />
+    <button class="btn btn-danger" role="button">REMOVE</button>
+  </div>`;
   cartRow.innerHTML = cartRowContents;
   cartItems.append(cartRow);
   cartRow

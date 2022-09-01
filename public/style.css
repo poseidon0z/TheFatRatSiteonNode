@@ -188,20 +188,23 @@ body {
     text-align: center;
     color: #EEE;
     font-weight: bold;
-    width: 11%;
+    width: 13%;
 }
 
 .tour-location {
-    width: 24%;
+    width: 16%;
+    text-align: center;
 }
 
 .tour-topic {
-    width: 42%;
+    width: 52%;
+    text-align: center;
 }
 
 .tour-btn {
     max-width: 19%;
     padding: 0.5em 1em;
+    align-items: right;
 }
 
 .btn-primary {

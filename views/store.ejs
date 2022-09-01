@@ -25,113 +25,44 @@
     <section>
       <h2 class="section-header">MUSIC</h2>
       <div class="shop-section">
-        <div class="shop-item">
-          <span class="shop-item-title">Fly Away</span>
+        <% items.music.forEach(function(item){ %>
+        <div class="shop-item" data--item-id="<%= item.id %>">
+          <span class="shop-item-title"><%= item.name %></span>
           <img
             class="shop-item-image"
-            src="Images/fly away.jpg"
-            alt="Fly away album art"
+            src="Images/<%= item.imgName  %>"
+            alt="<%= item.name %> album art"
           />
           <div class="shop-item-details">
-            <span class="shop-item-price">$1.99</span>
+            <span class="shop-item-price">$<%= item.price/100 %> </span>
             <button class="btn btn-primary shop-item-btn" type="button">
               ADD TO CART
             </button>
           </div>
         </div>
-
-        <div class="shop-item">
-          <span class="shop-item-title">Rise Up</span>
-          <img
-            class="shop-item-image"
-            src="Images/rise up.jpg"
-            alt="Rise up album art"
-          />
-          <div class="shop-item-details">
-            <span class="shop-item-price">$1.99</span>
-            <button class="btn btn-primary shop-item-btn" type="button">
-              ADD TO CART
-            </button>
-          </div>
-        </div>
-
-        <div class="shop-item">
-          <span class="shop-item-title">Monody</span>
-          <img
-            class="shop-item-image"
-            src="Images/monody.jpg"
-            alt="Monody album art"
-          />
-          <div class="shop-item-details">
-            <span class="shop-item-price">$1.99</span>
-            <button class="btn btn-primary shop-item-btn" type="button">
-              ADD TO CART
-            </button>
-          </div>
-        </div>
-
-        <div class="shop-item">
-          <span class="shop-item-title">Xenogenesis</span>
-          <img
-            class="shop-item-image"
-            src="Images/xenogenesis.jpg"
-            alt="Xenogenesis album art"
-          />
-          <div class="shop-item-details">
-            <span class="shop-item-price">$1.99</span>
-            <button class="btn btn-primary shop-item-btn" type="button">
-              ADD TO CART
-            </button>
-          </div>
-        </div>
+        <% }) %>
       </div>
     </section>
 
     <section>
       <h2 class="section-header">MERCH</h2>
       <div class="shop-section">
-        <div class="shop-item">
-          <span class="shop-item-title">Poster</span>
+        <% items.merch.forEach(function(item){ %>
+        <div class="shop-item" data--item-id="<%= item.id %>">
+          <span class="shop-item-title"><%= item.name %></span>
           <img
             class="shop-item-image"
-            src="Images/poster.jpg"
-            alt="Poster thumbnail"
+            src="Images/<%= item.imgName  %>"
+            alt="<%= item.name %> album art"
           />
           <div class="shop-item-details">
-            <span class="shop-item-price">$19.99</span>
+            <span class="shop-item-price">$<%= item.price/100 %> </span>
             <button class="btn btn-primary shop-item-btn" type="button">
               ADD TO CART
             </button>
           </div>
         </div>
-        <div class="shop-item">
-          <span class="shop-item-title">Hoodie</span>
-          <img
-            class="shop-item-image"
-            src="Images/hoodie.jpg"
-            alt="Hoodie thumbnail"
-          />
-          <div class="shop-item-details">
-            <span class="shop-item-price">$49.99</span>
-            <button class="btn btn-primary shop-item-btn" type="button">
-              ADD TO CART
-            </button>
-          </div>
-        </div>
-        <div class="shop-item">
-          <span class="shop-item-title">Shirt</span>
-          <img
-            class="shop-item-image"
-            src="Images/shirt.jpg"
-            alt="Shirt thumbnail"
-          />
-          <div class="shop-item-details">
-            <span class="shop-item-price">$19.99</span>
-            <button class="btn btn-primary shop-item-btn" type="button">
-              ADD TO CART
-            </button>
-          </div>
-        </div>
+        <% }) %>
       </div>
     </section>
 

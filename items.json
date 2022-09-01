@@ -1,0 +1,48 @@
+{
+    "music" : [
+        {
+            "id" : 1,
+            "name" : "Fly Away",
+            "price" : 199,
+            "imgName" : "fly away.jpg"
+        },
+        {
+            "id" : 2,
+            "name" : "Rise Up",
+            "price" : 199,
+            "imgName" : "rise up.jpg"
+        },
+        {
+            "id" : 3,
+            "name" : "Monody",
+            "price" : 199,
+            "imgName" : "monody.jpg"
+        },
+        {
+            "id" : 4,
+            "name" : "Xenogenesis",
+            "price" : 199,
+            "imgName" : "xenogenesis.jpg"
+        }
+    ],
+    "merch" : [
+        {
+            "id" : 5,
+            "name" : "Poster",
+            "price" : 1999,
+            "imgName" : "poster.jpg"
+        },
+        {
+            "id" : 6,
+            "name" : "Hoodie",
+            "price" : 4999,
+            "imgName" : "hoodie.jpg"
+        },
+        {
+            "id" : 7,
+            "name" : "Shirt",
+            "price" : 1999,
+            "imgName" : "shirt.jpg"
+        }
+    ]
+}
